@@ -1,5 +1,31 @@
 # Hyprscroller
 
+> ### ⚠️ Archived
+>
+> I am no longer using Hyprland.
+>
+
+I am moving from Hyprland/hyprscroller to [scroll](https://github.com/dawsers/scroll).
+I decided to fork [sway](https://github.com/swaywm/sway/) and create a
+compatible compositor with *hyprscroller* layout and features.
+
+Hyprland was starting to limit what I could add through a plugin. Updating
+*hyprscroller* because of Hyprland changes, and working around API limitations
+to implement new features was delaying development more than I wanted.
+*Hyprscroller* became too brittle and dependant on hacks. Changes upstream
+could break it very easily.
+
+I chose sway because it is a stable platform, well written, implements all the
+standard features and it is relatively easy to modify.
+
+Now Hyprscroller is completely integrated, and this allows some quite exciting
+features to work very easily.
+
+If you are curious about the current state of the project, click [here](https://github.com/dawsers/scroll).
+
+
+# Hyprscroller
+
 [Hyprscroller](https://github.com/dawsers/hyprscroller) is a
 [Hyprland](https://hyprland.org) layout plugin that creates a window layout
 similar to [PaperWM](https://github.com/paperwm/PaperWM).
