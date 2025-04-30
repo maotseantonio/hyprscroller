@@ -1,3 +1,12 @@
+# Hyprscroller (fork)
+
+The original author has stopped maintaining this plugin.
+Since I am still actively using it, I will be keeping it up-to-date as long as possible.
+
+Original readme below.
+
+---
+
 # Hyprscroller
 
 > ### ⚠️ Archived
