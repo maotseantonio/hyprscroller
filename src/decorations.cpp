@@ -60,7 +60,7 @@ void SelectionBorders::draw(PHLMONITOR pMonitor, float const& a) {
     if (m_bAssignedGeometry.width < m_seExtents.topLeft.x + 1 || m_bAssignedGeometry.height < m_seExtents.topLeft.y + 1)
         return;
 
-    CBox windowBox = assignedBoxGlobal().translate(-pMonitor->vecPosition + m_pWindow->m_floatingOffset).expand(-m_pWindow->getRealBorderSize()).scale(pMonitor->scale).round();
+    CBox windowBox = assignedBoxGlobal().translate(-pMonitor->m_position + m_pWindow->m_floatingOffset).expand(-m_pWindow->getRealBorderSize()).scale(pMonitor->m_scale).round();
 
     if (windowBox.width < 1 || windowBox.height < 1)
         return;
@@ -75,7 +75,7 @@ void SelectionBorders::draw(PHLMONITOR pMonitor, float const& a) {
     }
 
     int        borderSize = m_pWindow->getRealBorderSize();
-    const auto ROUNDING   = m_pWindow->rounding() * pMonitor->scale;
+    const auto ROUNDING   = m_pWindow->rounding() * pMonitor->m_scale;
     const auto ROUNDINGPOWER = m_pWindow->roundingPower();
 
     CBorderPassElement::SBorderData data;
@@ -93,7 +93,7 @@ void SelectionBorders::draw(PHLMONITOR pMonitor, float const& a) {
         data.lerp     = m_pWindow->m_borderFadeAnimationProgress->value();
     }
 
-    g_pHyprRenderer->m_sRenderPass.add(makeShared<CBorderPassElement>(data));
+    g_pHyprRenderer->m_renderPass.add(makeShared<CBorderPassElement>(data));
 }
 
 eDecorationType SelectionBorders::getDecorationType() {
@@ -138,7 +138,7 @@ void SelectionBorders::damageEntire() {
 
     for (auto const& m : g_pCompositor->m_monitors) {
         if (!g_pHyprRenderer->shouldRenderWindow(m_pWindow.lock(), m)) {
-            const CRegion monitorRegion({m->vecPosition, m->vecSize});
+            const CRegion monitorRegion({m->m_position, m->m_size});
             borderRegion.subtract(monitorRegion);
         }
     }
@@ -210,7 +210,7 @@ CBox JumpDecoration::assignedBoxGlobal() {
 }
 
 void JumpDecoration::draw(PHLMONITOR pMonitor, float const& a) {
-    CBox windowBox = assignedBoxGlobal().translate(-pMonitor->vecPosition).scale(pMonitor->scale).round();
+    CBox windowBox = assignedBoxGlobal().translate(-pMonitor->m_position).scale(pMonitor->m_scale).round();
 
     if (windowBox.width < 1 || windowBox.height < 1)
         return;
@@ -233,7 +233,7 @@ void JumpDecoration::draw(PHLMONITOR pMonitor, float const& a) {
     CTexPassElement::SRenderData data;
     data.tex = m_pTexture;
     data.box = windowBox;
-    g_pHyprRenderer->m_sRenderPass.add(makeShared<CTexPassElement>(data));
+    g_pHyprRenderer->m_renderPass.add(makeShared<CTexPassElement>(data));
 }
 
 eDecorationType JumpDecoration::getDecorationType() {
