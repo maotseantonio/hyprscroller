@@ -88,7 +88,7 @@
             '';
 
             meta = with lib; {
-              homepage = "https://github.com/maotseantonio/hyprscroller-flake";
+              homepage = "https://github.com/cpiber/hyprscroller";
               description = "Hyprland layout plugin providing a scrolling layout like PaperWM";
               license = licenses.mit;
               platforms = platforms.linux;
