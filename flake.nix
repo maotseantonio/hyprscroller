@@ -64,7 +64,7 @@
             src =
               if (commitPins ? ${hyprland.rev}) && (self ? rev) then
                 (builtins.fetchGit {
-                  url = "https://github.com/maotseantonio/hyprscroller";
+                  url = "https://github.com/cpiber/hyprscroller";
                   rev = selfRev;
                 })
               else
