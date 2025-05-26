@@ -5,6 +5,14 @@ Since I am still actively using it, I will be keeping it up-to-date as long as p
 
 Original readme below.
 
+## Nix
+
+*hyprscroller* is now an official unstable package in [nixpkgs](https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=hyprlandPlugins.hyprscroller),
+however, it is not known if the package will be updated with this fork.
+
+This repository contains a flake, which should build the appropriate version of *hyprscroller*.
+Please refer to [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins/#nix) on how to use it.
+
 ---
 
 # Hyprscroller
