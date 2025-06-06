@@ -85,6 +85,9 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:scroller:jump_labels_color", Hyprlang::INT{0x80159e30});
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:scroller:jump_labels_keys", Hyprlang::STRING{"1234"});
 
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:scroller:avoid_focus_on_float_close", Hyprlang::INT{0});// 0, 1
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:scroller:avoid_focus_on_xwayland_float_close", Hyprlang::INT{0});// 0, 1
+
     HyprlandAPI::reloadConfig();
 
     return {"hyprscroller", "scrolling window layout", "dawser", "1.0"};

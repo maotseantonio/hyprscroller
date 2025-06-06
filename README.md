@@ -5,6 +5,14 @@ Since I am still actively using it, I will be keeping it up-to-date as long as p
 
 Original readme below.
 
+## Nix
+
+*hyprscroller* is now an official unstable package in [nixpkgs](https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=hyprlandPlugins.hyprscroller),
+however, it is not known if the package will be updated with this fork.
+
+This repository contains a flake, which should build the appropriate version of *hyprscroller*.
+Please refer to [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins/#nix) on how to use it.
+
 ---
 
 # Hyprscroller
@@ -916,6 +924,19 @@ even if you keep the mouse over the gap for longer than the timeout, the
 event won't be triggered until your next mouse movement. The easiest way to
 scroll is to flick the mouse inside and outside of the gap to make sure you
 only scroll once.
+
+### `avoid_focus_on_xwayland_float_close`
+
+Some input methods (IMEs) on XWayland create temporary floating windows
+like candidate popups while typing. These windows may be quickly removed.
+
+When such a window closes, hyprscroller may change focus to another window.
+For XWayland floating windows, this can cause input methods to lose focus.
+
+This setting disables focus changes only when an XWayland floating window
+is removed. Other windows are unaffected.
+
+Default is `0` (off). Enable it if you face input focus problems with XWayland:
 
 ### `cyclesize_wrap`
 

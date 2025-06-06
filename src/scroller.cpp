@@ -392,8 +392,18 @@ void ScrollerLayout::onWindowRemovedTiling(PHLWINDOW window)
 /*
     Called when a floating window is removed (unmapped)
 */
-void ScrollerLayout::onWindowRemovedFloating(PHLWINDOW)
+void ScrollerLayout::onWindowRemovedFloating(PHLWINDOW window)
 {
+    static auto* const *avoid_focus = (Hyprlang::INT* const*)HyprlandAPI::getConfigValue(PHANDLE, "plugin:scroller:avoid_focus_on_float_close")->getDataStaticPtr();
+    static auto* const *avoid_focus_x11 = (Hyprlang::INT* const*)HyprlandAPI::getConfigValue(PHANDLE, "plugin:scroller:avoid_focus_on_xwayland_float_close")->getDataStaticPtr();
+    if (**avoid_focus) {
+        return;
+    }
+    if (window && window->m_isX11 && **avoid_focus_x11) {
+        // Avoid automatic focus switch when an XWayland floating window is removed,
+        // to prevent input method losing focus
+        return;
+    }
     WORKSPACEID workspace_id = g_pCompositor->m_lastMonitor->activeSpecialWorkspaceID();
     if (!workspace_id) {
         workspace_id = g_pCompositor->m_lastMonitor->activeWorkspaceID();
